@@ -62,7 +62,7 @@ if uploaded_file is not None:
 
             with st.spinner("Gemini AI가 이미지를 분석하고 있습니다..."):
                 response = client.models.generate_content(
-                    model="gemini-3.8-flash",
+                    model="gemini-3.5-flash-lite",
                     contents=[
                         prompt,
                         types.Part.from_bytes(
