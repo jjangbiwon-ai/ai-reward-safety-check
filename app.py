@@ -87,8 +87,7 @@ if uploaded_file is not None:
         except Exception as e:
             st.error("AI 분석 과정에서 오류가 발생했습니다.")
             st.code(f"{type(e).__name__}: {str(e)}")
-        
-            )
+                    
 
 else:
     st.write("분석할 이미지 1장을 선택해 주세요.")
