@@ -14,6 +14,9 @@ st.write("리워드 광고 속 보상과 출금 조건을 확인해 보세요.")
 
 st.info("광고 또는 리워드 앱 화면을 캡처해서 올려주세요.")
 
+app_name = st.text_input("📱 앱 이름 (선택사항)")
+app_url = st.text_input("🔗 앱스토어 또는 광고 영상 주소 (선택사항)")
+  
 uploaded_file = st.file_uploader(
     "📷 광고·앱 화면 이미지 업로드",
     type=["png", "jpg", "jpeg"]
@@ -38,7 +41,12 @@ if uploaded_file is not None:
             else:
                 mime_type = "image/jpeg"
 
-            prompt = """
+            
+prompt = f"""
+앱 이름(사용자 입력): {app_name or '입력하지 않음'}
+앱 또는 광고 주소(사용자 입력): {app_url or '입력하지 않음'}
+주의: 위 정보는 사용자가 제공한 내용이며, 실제 앱이나 주소를 방문하여 검증한 정보가 아닙니다.
+
 당신은 리워드 광고의 보상 및 출금 조건을
 분석하는 소비자 정보 안내 도우미입니다.
 
