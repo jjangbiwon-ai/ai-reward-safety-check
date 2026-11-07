@@ -92,9 +92,8 @@ if uploaded_file is not None:
                 "Gemini API 키를 찾을 수 없습니다. "
                 "Streamlit Secrets 설정을 확인해 주세요."
             )
-        except Exception as e:
-            st.error("AI 분석 과정에서 오류가 발생했습니다.")
-            st.code(f"{type(e).__name__}: {str(e)}")
+        except Exception:
+            st.error("일시적으로 AI 분석을 완료하지 못했습니다. 잠시 후 다시 시도해 주세요.")
                     
 
 else:
