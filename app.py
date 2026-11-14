@@ -14,15 +14,18 @@ st.set_page_config(
 
 st.markdown(
     """
+
 <div style="text-align:center; margin:0 0 10px 0;">
   <div style="
-    display:inline-block;
+    display:table;
+    width:max-content;
     max-width:100%;
     box-sizing:border-box;
+    margin:0 auto;
     background-color:#FFEB58;
     border:3px solid #D62828;
     border-radius:22px;
-    padding:7px 28px;
+    padding:8px 24px;
     text-align:center;
   ">
     <h1 style="
@@ -31,9 +34,10 @@ st.markdown(
       font-weight:800;
       line-height:1.3;
       margin:0;
-    ">🛡️ 돈 번다는 앱 분석기</h1>
+    ">🛡️ 돈 준다는 광고 앱 분석기</h1>
   </div>
 </div>
+
 <div style="
   text-align:center;
   margin:0 auto 8px auto;
