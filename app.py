@@ -12,14 +12,33 @@ st.set_page_config(
 
 st.markdown(
     """
-    <h1 style="
-        color:#1565C0;
-        font-size:30px;
-        font-weight:800;
-        line-height:1.35;
+    
+<div style="
+    text-align:center;
+    margin-bottom:20px;
+">
+    <div style="
+        display:inline-block;
+        max-width:100%;
+        box-sizing:border-box;
+        background-color:#FFEB58;
+        border:3px solid #D62828;
+        border-radius:22px;
+        padding:12px 16px;
+        text-align:center;
     ">
-    🛡️ 돈 번다는 앱 분석기
-    </h1>
+        <h1 style="
+            color:#142B66;
+            font-size:clamp(19px, 5vw, 28px);
+            font-weight:800;
+            line-height:1.4;
+            margin:0;
+        ">
+            🛡️ 돈 번다는 앱 분석기
+        </h1>
+    </div>
+</div>
+
 
     <p style="
         color:#D32F2F;
