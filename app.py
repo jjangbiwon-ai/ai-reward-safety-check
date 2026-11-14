@@ -147,6 +147,36 @@ if not has_image and not has_text:
             "화면 이미지를 첨부해 주세요."
         )
 
+# 플레이스토어에서 확인한 공식 정보 정리
+official_store_text = "플레이스토어 공식 정보: 조회되지 않음"
+
+if app_url.strip():
+    parsed_store_url = urlparse(app_url.strip())
+
+    if (
+        parsed_store_url.hostname in ("play.google.com", "www.play.google.com")
+        and parsed_store_url.path == "/store/apps/details"
+    ):
+        store_package_id = parse_qs(
+            parsed_store_url.query
+        ).get("id", [""])[0]
+
+        if store_package_id:
+            try:
+                official_info = play_store_app(
+                    store_package_id,
+                    lang="ko",
+                    country="kr"
+                )
+
+                official_store_text = (
+                    f"앱 이름: {official_info.get('title', '확인 불가')}\n"
+                    f"개발사: {official_info.get('developer', '확인 불가')}\n"
+                    f"공식 앱 설명: {official_info.get('description', '확인 불가')[:3000]}"
+                )
+            except Exception:
+                official_store_text = "플레이스토어 공식 정보: 조회 실패"
+
 if st.button(
     "🤖 AI 분석하기",
     type="primary",
@@ -165,6 +195,16 @@ if st.button(
 앱 또는 광고 주소: {app_url or '입력하지 않음'}
 광고 내용:
 {ad_text or '입력하지 않음'}
+
+[구글 플레이스토어 공식 등록 정보]
+{official_store_text}
+
+[공식 정보와 광고 내용 비교]
+- 플레이스토어 정보가 조회된 경우에만 공식 등록 정보로 취급하세요.
+- 광고에서 주장하는 보상금액과 출금 조건이 공식 앱 설명에 있는지 비교하세요.
+- 공식 설명에 내용이 없으면 '공식 설명에서 확인되지 않음'이라고 표시하세요.
+- 공식 설명에 내용이 없다는 이유만으로 광고가 허위라고 단정하지 마세요.
+- 공식 등록 정보와 사용자 입력 광고 내용은 출처를 구분하세요.
 
 [중요한 자료 구분]
 - 앱 이름, 주소, 광고 내용은 사용자가 제공한 정보입니다.
@@ -208,9 +248,10 @@ if st.button(
 - 광고에서 주장하는 보상금액을
   실제 지급되는 현금으로 단정하지 마세요.
 - 확인되지 않은 정보는 만들어내지 마세요.
-- 실제 앱스토어 정보나 영상 내용을
-  조회한 것처럼 설명하지 마세요.
-- 공식 앱 로고를 확인한 것처럼 표현하지 마세요.
+- 제공된 플레이스토어 조회 결과만 공식 등록 정보로 활용하고, 
+  실제 광고 영상은 조회했다고 주장하지 마세요.
+- 로고가 화면에 표시되더라도 로고만으로 앱의 신뢰성이나 
+  보상 지급 여부를 판단하지 마세요.
 - 자료가 부족하면 '확인 불가'라고 표시하세요.
 - 이해하기 쉬운 한국어로 작성하세요.
 """
