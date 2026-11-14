@@ -62,7 +62,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-)
+
 
 st.info("**아래 항목에 앱 정보와 분석 자료를 입력해 주세요.**")
 
