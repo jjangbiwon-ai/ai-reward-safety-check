@@ -2,7 +2,7 @@
 import streamlit as st
 from google import genai
 from google.genai import types
-
+from google_play_scraper import app as play_store_app
 st.set_page_config(
     page_title="돈 번다는 앱 분석기",
     page_icon="🛡️",
@@ -76,6 +76,38 @@ app_url = st.text_input(
     "🔗 앱스토어 또는 광고 영상 주소 (선택사항)",
     placeholder="https://..."
 )
+
+# 구글 플레이스토어 앱 정보 자동 조회
+from urllib.parse import urlparse, parse_qs
+
+if app_url.strip():
+    parsed_url = urlparse(app_url.strip())
+
+    if parsed_url.hostname in ("play.google.com", "www.play.google.com") and parsed_url.path == "/store/apps/details":
+        package_id = parse_qs(parsed_url.query).get("id", [""])[0]
+
+        if package_id:
+            try:
+                with st.spinner("플레이스토어 앱 정보를 확인하고 있습니다..."):
+                    store_info = play_store_app(package_id, lang="ko", country="kr")
+
+                st.subheader("📱 플레이스토어 등록 정보")
+
+                if store_info.get("icon"):
+                    st.image(store_info["icon"], width=90)
+
+                st.write("**앱 이름:**", store_info.get("title", "확인 불가"))
+                st.write("**개발사:**", store_info.get("developer", "확인 불가"))
+                st.write("**앱 설명:**")
+                st.write(store_info.get("description", "확인 불가"))
+
+                st.caption("출처: 구글 플레이스토어 공개 등록 정보")
+                st.warning("플레이스토어 등록 정보는 실제 보상 지급이나 출금 가능성을 보증하지 않습니다.")
+
+            except Exception:
+                st.warning("앱 정보를 가져오지 못했습니다. 주소 또는 앱 등록 상태를 확인해 주세요.")
+        else:
+            st.warning("플레이스토어 주소에서 앱 식별번호를 찾지 못했습니다.")
 
 ad_text = st.text_area(
     "📝 광고 내용 및 리워드 조건 직접 입력",
