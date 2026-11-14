@@ -180,7 +180,8 @@ if app_url.strip():
 if st.button(
     "🤖 AI 분석하기",
     type="primary",
-    disabled=not (has_image or has_text)
+    disabled=not (has_image or has_text or official_store_text.startswith("앱 이름:"))
+
 ):
     try:
         api_key = st.secrets["GEMINI_API_KEY"]
