@@ -98,8 +98,10 @@ if app_url.strip():
 
                 st.write("**앱 이름:**", store_info.get("title", "확인 불가"))
                 st.write("**개발사:**", store_info.get("developer", "확인 불가"))
-                st.write("**앱 설명:**")
-                st.write(store_info.get("description", "확인 불가"))
+                
+                with st.expander("📖 공식 앱 설명 자세히 보기"):
+                    st.write(store_info.get("description", "확인 불가"))
+
 
                 st.caption("출처: 구글 플레이스토어 공개 등록 정보")
                 st.warning("플레이스토어 등록 정보는 실제 보상 지급이나 출금 가능성을 보증하지 않습니다.")
