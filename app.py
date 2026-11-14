@@ -4,13 +4,46 @@ from google import genai
 from google.genai import types
 
 st.set_page_config(
-    page_title="AI 리워드 광고 안심체크",
+    page_title="돈 번다는 앱 분석기",
     page_icon="🛡️",
     layout="centered"
 )
 
-st.title("🛡️ AI 리워드 광고 안심체크")
-st.write("리워드 광고 속 보상과 출금 조건을 확인해 보세요.")
+
+st.markdown(
+    """
+    <h1 style="
+        color:#1565C0;
+        font-size:30px;
+        font-weight:800;
+        line-height:1.35;
+    ">
+    🛡️ 돈 번다는 앱 분석기
+    </h1>
+
+    <p style="
+        color:#D32F2F;
+        font-size:19px;
+        font-weight:800;
+        line-height:1.5;
+    ">
+    영상만 보면 돈을 준다는 광고,<br>
+    정말 믿어도 될까요?
+    </p>
+
+    <p style="
+        color:#16803C;
+        font-size:17px;
+        font-weight:700;
+        line-height:1.6;
+    ">
+    AI가 광고 속 보상금액과 출금 조건을
+    분석해 드립니다.
+    </p>
+    """,
+    unsafe_allow_html=True
+)
+
 
 st.info("**아래 항목에 앱 정보와 분석 자료를 입력해 주세요.**")
 
