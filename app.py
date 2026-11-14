@@ -11,30 +11,57 @@ st.set_page_config(
 
 
 
+
 st.markdown(
     """
-<div style="text-align:center; margin-bottom:20px;">
-  <div style="display:inline-block; max-width:100%;
-              box-sizing:border-box; background-color:#FFEB58;
-              border:3px solid #D62828; border-radius:22px;
-              padding:12px 16px; text-align:center;">
-    <h1 style="color:#142B66; font-size:clamp(19px,5vw,28px);
-               font-weight:800; line-height:1.4; margin:0;">
-      🛡️ 돈 번다는 앱 분석기
-    </h1>
+<div style="text-align:center; margin:0 0 10px 0;">
+  <div style="
+    display:inline-block;
+    max-width:100%;
+    box-sizing:border-box;
+    background-color:#FFEB58;
+    border:3px solid #D62828;
+    border-radius:22px;
+    padding:7px 28px;
+    text-align:center;
+  ">
+    <h1 style="
+      color:#142B66;
+      font-size:clamp(22px, 5vw, 34px);
+      font-weight:800;
+      line-height:1.3;
+      margin:0;
+    ">🛡️ 돈 번다는 앱 분석기</h1>
   </div>
 </div>
-<p style="color:#D32F2F; font-size:19px;
-          font-weight:800; line-height:1.5;">
-  영상만 보면 돈을 준다는 광고,<br>
-  정말 믿어도 될까요?
-</p>
-<p style="color:#16803C; font-size:17px;
-          font-weight:700; line-height:1.6;">
-  AI가 광고 속 보상금액과 출금 조건을 분석해 드립니다.
-</p>
+<div style="
+  text-align:center;
+  margin:0 auto 8px auto;
+">
+  <p style="
+    color:#D32F2F;
+    font-size:19px;
+    font-weight:800;
+    line-height:1.5;
+    margin:0;
+  ">영상만 보면 돈을 준다는 광고, 정말 믿어도 될까요?</p>
+</div>
+<div style="
+  text-align:center;
+  margin:0 auto 15px auto;
+">
+  <p style="
+    color:#16803C;
+    font-size:16px;
+    font-weight:700;
+    line-height:1.5;
+    margin:0;
+  ">AI가 광고 속 보상금액과 출금 조건을 분석해 드립니다.</p>
+</div>
     """,
     unsafe_allow_html=True
+)
+
 )
 
 st.info("**아래 항목에 앱 정보와 분석 자료를 입력해 주세요.**")
