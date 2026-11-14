@@ -134,19 +134,6 @@ if uploaded_file is not None:
 has_image = uploaded_file is not None
 has_text = bool(ad_text.strip())
 
-if not has_image and not has_text:
-    st.warning(
-        "분석하려면 광고 내용을 직접 입력하거나 "
-        "이미지 1장을 첨부해 주세요."
-    )
-
-    if app_url.strip():
-        st.info(
-            "현재는 영상 링크만으로 영상 내용을 자동으로 "
-            "읽을 수 없습니다. 광고 내용을 직접 입력하거나 "
-            "화면 이미지를 첨부해 주세요."
-        )
-
 # 플레이스토어에서 확인한 공식 정보 정리
 official_store_text = "플레이스토어 공식 정보: 조회되지 않음"
 
@@ -176,6 +163,24 @@ if app_url.strip():
                 )
             except Exception:
                 official_store_text = "플레이스토어 공식 정보: 조회 실패"
+# 분석 자료 입력 안내
+if not has_image and not has_text:
+    if not official_store_text.startswith("앱 이름:"):
+        st.warning(
+            "분석하려면 플레이스토어 주소, 광고 내용 또는 "
+            "화면 이미지 중 하나를 입력해 주세요."
+        )
+
+# 영상 링크 분석 제한 안내
+if app_url.strip():
+    if not official_store_text.startswith("앱 이름:"):
+        st.info(
+            "영상 링크만으로는 영상 내용을 자동 분석할 수 없습니다. "
+            "광고 내용을 직접 입력하거나 화면 이미지를 첨부해 주세요."
+        )
+
+
+
 
 if st.button(
     "🤖 AI 분석하기",
