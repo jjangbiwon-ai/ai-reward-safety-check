@@ -26,7 +26,7 @@ st.markdown(
     text-align:center;
   ">
     <h1 style="
-      color:#142B66;
+      color:#0057D9;
       font-size:clamp(22px, 5vw, 34px);
       font-weight:800;
       line-height:1.3;
